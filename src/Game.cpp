@@ -38,7 +38,10 @@ void Game::start() {
 void Game::addItem() {
     std::shared_ptr<Items> item = std::make_shared<Weapon>(100, 5, "Fire Damage", false, "FLaming Sward", 25);
     inventory.addItems(item);
-    std::shared_ptr<Items> spell = std::make_shared<Spell>(2.5f, 10, 20, 50, 50, true, "Healing", 0);
+    std::shared_ptr<Items> spell = std::make_shared<MagicItems>
+    (1.5f, 0, 0, 10,10, false, "Fireball", 30, 100, 5, "Burn", false, "basic", 10, 1,3,true, 7,3, "Rare"
+
+    );
     inventory.addItems(spell);
 
 }
