@@ -2,13 +2,14 @@
 #define GHOST_H
 #include "Obstacle.h"
 #include "Game.h"
+class Game;
 
 class Ghost : public Obstacle {
 private:
     bool fly;
     int power;
     int value;
-    Game* game{};
+    Game* game;
 
 public:
     Ghost();
