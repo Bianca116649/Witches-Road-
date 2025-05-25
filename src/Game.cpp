@@ -35,6 +35,13 @@ void Game::start() {
     }
 }
 
+void Game::addItem() {
+    std::shared_ptr<Items> item = std::make_shared<Weapon>(100, 5, "Fire Damage", false, "FLaming Sward", 25);
+    inventory.addItems(item);
+    std::shared_ptr<Items> spell = std::make_shared<Spell>(2.5f, 10, 20, 50, 50, true, "Healing", 0);
+    inventory.addItems(spell);
+
+}
 void Game::chooseCharacter() {
     char input;
     std::unique_ptr<ICharacterCreator> creator;
@@ -43,7 +50,6 @@ void Game::chooseCharacter() {
         std::cin>>input;
         input=tolower(input);
         if (input == 'y') {
-
             creator = std::make_unique<DefaultCharacterCreator>();
             break;
         } else if (input == 'n') {

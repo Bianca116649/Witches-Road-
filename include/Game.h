@@ -27,6 +27,7 @@ public:
     ~Game();
     static Game& getInstance();
     void run();
+    void addItem();
     void chooseCharacter();
     void start();
     void selectLevel();
