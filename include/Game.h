@@ -1,5 +1,6 @@
 #ifndef GAME_H
 #define GAME_H
+#include <Inventory.h>
 #include <iostream>
 #include <memory>
 #include "Character.h"
@@ -15,6 +16,7 @@ private:
     std::string lvl_name;
     static Game* instancePtr;
     int score;
+    Inventory inventory;
     std::string player1;
     std::string player2;
     Game() : map(std::make_shared<Map>()),gameOn(true), lvl_name("_"), score(0) {}

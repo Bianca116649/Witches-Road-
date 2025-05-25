@@ -11,7 +11,7 @@ private:
     int charges;
     std::string rarity;
 public:
-    MagicItems(float castTime, int requiredLvl, int Sx, int Sy, int Sw, int Sh, bool canHeal, const std::string &name,
+    MagicItems(float castTime, int Sx, int Sy, int Sw, int Sh, bool canHeal, const std::string &name,
         int damage, int durability, int attackRange, const std::string &specialeffect, bool isBroken,
         const std::string &basic_string, int damage1, int required_lvl, int max_targets, bool secundary_effect,
         int duration, int charges, const std::string &rarity);

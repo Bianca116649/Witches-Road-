@@ -12,13 +12,13 @@ private:
 public:
     Inventory() = default;
 
-    // void addItems(const std::shared_ptr<Items>& item);
+    void addItems(const std::shared_ptr<Items>& item);
 
-    // int LvlfromItem();
+    int LvlfromItem();
 
-    // void sortItems();
+    void sortItems();
 
-    // void printSort();
+    void printSort();
 
     ~Inventory()=default;
     friend std::ostream& operator<<(std::ostream& os, const Inventory& inventory);

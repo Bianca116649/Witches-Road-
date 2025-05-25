@@ -100,6 +100,9 @@ void Game::run() {
 
 void Game::stop() {
     gameOn = false;
+    std::cout<<"Final inventory:\n";
+    inventory.printSort();
+    std::cout<<"Total power received from items: "<<inventory.LvlfromItem()<<"\n";
     std::cout<<*this;
     std::cout << "Thanks for playing.\n";
 }
@@ -155,7 +158,6 @@ void Game::verifyPosition(Character& c) const {
                 obs->activate(c);
             }
             else std::cout<<"Inactive obstacle. You are safe.\n";
-
         }
     }
 }

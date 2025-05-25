@@ -2,11 +2,12 @@
 #include "../include/Spell.h"
 #include "../include/Weapon.h"
 
-MagicItems::MagicItems(float castTime, int requiredLvl, int Sx, int Sy, int Sw, int Sh, bool canHeal, const std::string &name,
+MagicItems::MagicItems(float castTime, int Sx, int Sy, int Sw, int Sh, bool canHeal, const std::string &name,
                        int damage, int durability, int attackRange, const std::string &specialeffect, bool isBroken,
                        const std::string &basic_string, int damage1, int required_lvl, int max_targets, bool secundary_effect,
                        int duration, int charges, const std::string &rarity)
-    : Spell(castTime, requiredLvl, Sx, Sy, Sw, Sh, canHeal, name, damage),
+    : Items(damage, name),
+Spell(castTime, Sx, Sy, Sw, Sh, canHeal, name, damage),
       Weapon(durability, attackRange, specialeffect, isBroken, basic_string, damage1),
 maxTargets(max_targets), secundaryEffect(secundary_effect), duration(duration),
       charges(charges), rarity(rarity) {}
@@ -15,7 +16,8 @@ maxTargets(max_targets), secundaryEffect(secundary_effect), duration(duration),
 MagicItems::~MagicItems() = default;
 
 MagicItems::MagicItems(const MagicItems &other)
-        : Spell(other),
+        : Items(other),
+Spell(other),
           Weapon(other),
           maxTargets(other.maxTargets),
           secundaryEffect(other.secundaryEffect),
@@ -47,7 +49,9 @@ void MagicItems::giveDamage(const std::list<Ghost*>& ghosts) {
     const int rarityBonus = static_cast<int>(rarity.length())*3;
     const int originalDamage = damage;
     damage += rarityBonus;
+
     Spell::giveDamage(ghosts);
+
     if (canHeal) {
         for (Ghost* ghost : ghosts) {
             if (ghost && ghost->isAlive() && ghost->getPower()<50) {
@@ -56,7 +60,9 @@ void MagicItems::giveDamage(const std::list<Ghost*>& ghosts) {
         }
     }
     damage = originalDamage;
+
     Weapon::giveDamage();
+
     charges--;
     durability-=2;
     if (durability<=0){isBroken=true;}

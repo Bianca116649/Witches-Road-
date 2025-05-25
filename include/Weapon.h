@@ -3,7 +3,7 @@
 #include "Items.h"
 #include "Spikes.h"
 
-class Weapon: public virtual Items {
+class Weapon: virtual public Items {
 protected:
     int durability;
     int attackRange{};
