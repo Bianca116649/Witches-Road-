@@ -1,3 +1,15 @@
+33Witches Road
+
+"Witches Road" este un joc dezvoltat în C++ folosind principii de programare orientată pe obiect. Jocul se desfășoară pe o hartă bidimensionala, unde doua personaje — Witch si Deity — pornesc din colturi opuse si trebuie sa parcurga "drmul vrajitoarelor" pentru a se intalni. Pe parcursul calatoriei, personajele pot primi arme si vraji pentru a supravietui obstacolelor-precum nisipul miscator, tepii si fantomele care le vor ingreuna traseul, putand chiar fi omorate de catre acestea.
+
+## 🎮 Gameplay
+
+- Personajele se deplaseaza pe rand, utilizand tastatura.
+- Poti alege personaje default sau doua intre cele 4 deja personalizate.
+- Obstacolele influenteaza traseul si strategia.
+- Obiectele magice (arme și vraji) pot fi colectate si utilizate.
+- La finalul jocului se va afisa numele fiecarui jucator si scorul obtinut.
+
 # Nu primesc notă pentru că nu am pus titlu și descriere
 
 ### Folosiți template-ul corespunzător grupei voastre!
