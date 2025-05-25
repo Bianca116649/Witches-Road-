@@ -13,7 +13,7 @@ private:
 public:
     Ghost();
 
-    Ghost(int value, bool isAlive, int power, bool fly, int position_x, const std::string &name, int position_y,
+    Ghost(int value, int power, bool fly, int position_x, const std::string &name, int position_y,
           int total_damage, bool active);
 
     int getBaseDamage() const override;

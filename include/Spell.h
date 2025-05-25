@@ -19,7 +19,7 @@ public:
 
     Spell(const Spell &other);
     Spell& operator=(const Spell &other);
-
+    using Items::giveDamage;
     virtual void giveDamage(const std::list<Ghost*>& ghosts);
     bool inArea(int x, int y) const;
     int levelFromItems() const override;

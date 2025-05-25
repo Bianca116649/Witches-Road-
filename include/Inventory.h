@@ -7,7 +7,6 @@
 
 class Inventory {
 private:
-    int totalPointsfromLvl = 0;
     std::vector<std::shared_ptr<Items>> items;
 
 public:
