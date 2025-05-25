@@ -1,7 +1,7 @@
 #ifndef SPIKES_H
 #define SPIKES_H
 #include "Obstacle.h"
-#include "Game.h"
+
 class Game;
 
 class Spikes : public Obstacle {

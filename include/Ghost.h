@@ -1,7 +1,7 @@
 #ifndef GHOST_H
 #define GHOST_H
 #include "Obstacle.h"
-#include "Game.h"
+
 class Game;
 
 class Ghost : public Obstacle {
@@ -15,7 +15,7 @@ public:
     Ghost();
 
     Ghost(int value, int power, bool fly, int position_x, const std::string &name, int position_y,
-          int total_damage, bool active);
+          int total_damage, bool active, Game* game);
 
     int getBaseDamage() const override;
 
