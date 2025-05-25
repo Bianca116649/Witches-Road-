@@ -3,10 +3,6 @@
 
 #include <vector>
 #include <memory>
-#include <iostream>
-#include <algorithm>
-#include "Weapon.h"
-#include "Spell.h"
 #include "MagicItems.h"
 
 class Inventory {

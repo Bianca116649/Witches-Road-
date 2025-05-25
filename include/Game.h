@@ -12,19 +12,18 @@ private:
     std::shared_ptr<Character> caracter1;
     std::shared_ptr<Character> caracter2;
     bool gameOn;
-    int lvl;
     std::string lvl_name;
     static Game* instancePtr;
     int score;
     std::string player1;
     std::string player2;
-    Game() : map(std::make_shared<Map>()),gameOn(true), lvl(0), lvl_name("_"), score(0) {}
+    Game() : map(std::make_shared<Map>()),gameOn(true), lvl_name("_"), score(0) {}
 
 public:
 
     Game(const Game& obj) = delete;
     ~Game();
-    static Game* getInstance();
+    static Game& getInstance();
     void run();
     void chooseCharacter();
     void start();

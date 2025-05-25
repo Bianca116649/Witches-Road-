@@ -4,8 +4,9 @@
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 
 int main() {
-    Game* game = Game::getInstance();
-    game->start();
+    Game& game = Game::getInstance();
+    game.start();
+
     return 0;
 }
 

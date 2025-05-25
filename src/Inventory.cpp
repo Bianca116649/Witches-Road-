@@ -1,5 +1,6 @@
 #include "../include/Inventory.h"
 #include<iostream>
+#include <algorithm>
 void Inventory::addItems(const std::shared_ptr<Items>& item) {
     items.push_back(item);
 }

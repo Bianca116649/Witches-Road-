@@ -15,10 +15,11 @@
 
 Game::~Game()=default;
 
-Game* Game::instancePtr = new Game();
+Game* Game::instancePtr=nullptr;
 
-Game* Game::getInstance() {
-    return instancePtr;
+Game& Game::getInstance() {
+    static Game instance;
+    return instance;
 }
 
 void Game::start() {
@@ -110,7 +111,7 @@ void Game::moveCharacter() {
         std::cout<<"To move character enter: \n";
         std::cout<<"WITCH : W for up, A for left, D for right, S for down.\n";
         std::cout<<" DEITY : I for up, J for left, L for right, K for down.\n";
-        cin>>input;
+        std::cin>>input;
         input=tolower(input);
         int dx=0, dy=0;
         Character* target = nullptr;
@@ -124,7 +125,8 @@ void Game::moveCharacter() {
                 case 'j': dx= -1; target = caracter2.get(); break;
                 case 'k': dy= 1; target = caracter2.get(); break;
                 case 'l': dx= 1; target = caracter2.get(); break;
-                case 'q': stop();
+                case 'q': stop(); break;
+                default: std::cout<<"Invalid input.\n"; continue;
             }
         try {
             if (target == nullptr) {

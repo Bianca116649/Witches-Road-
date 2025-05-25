@@ -6,7 +6,7 @@
 std::pair<std::shared_ptr<Character>, std::shared_ptr<Character>> CharacterSelector::createCharacters(){
     const auto characters = CharacterFactory::createAllCharacters();
     std::cout<<"Available characters: \n";
-    for(auto i=0; i<characters.size(); i++){
+    for(size_t i=0; i<characters.size(); i++){
         std::cout<<i<<": ";
         characters[i]->displayInfo();
     }
