@@ -6,7 +6,7 @@ Ghost::Ghost(const int value, const int power, const bool fly, const int positio
     : Obstacle(name, total_damage, position_x, position_y, active),
 fly(fly), power(power), value(value), game(game) {}
 
-Ghost::Ghost(): fly(false), power(0), value(0) {
+Ghost::Ghost(): fly(false), power(0), value(0), game(nullptr) {
 }
 
 int Ghost::getBaseDamage() const {
