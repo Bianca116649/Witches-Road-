@@ -101,6 +101,7 @@ void Game::selectLevel() {
 void Game::run() {
     gameOn=true;
     std::cout<<"Game running...\nPress movement keys to control characters.\n";
+    addItem();
     moveCharacter();
 }
 
