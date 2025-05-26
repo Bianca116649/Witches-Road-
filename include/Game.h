@@ -1,7 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
+#include <fstream>
 #include <Inventory.h>
-#include <iostream>
 #include <memory>
 #include "Character.h"
 #include "Map.h"
@@ -9,6 +9,7 @@
 class Game {
 
 private:
+    std::ifstream f;
     std::shared_ptr<Map> map;
     std::shared_ptr<Character> caracter1;
     std::shared_ptr<Character> caracter2;

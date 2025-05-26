@@ -2,6 +2,9 @@
 #include <memory>
 #include <limits>
 #include "Game.h"
+
+#include <fstream>
+
 #include "Exceptii.h"
 #include "Map.h"
 #include "../include/Factory.h"
@@ -23,8 +26,9 @@ Game& Game::getInstance() {
 }
 
 void Game::start() {
+    f.open("tastatura.txt");
     std::cout << "GAME START\n";
-    std::cin>>*this;
+    f>>*this;
     std::cout<<"Use A,S,D,W for WITCH and I,J,K,L,P for DEITY.\n";
     try {
         chooseCharacter();
@@ -46,7 +50,7 @@ void Game::chooseCharacter() {
     std::unique_ptr<ICharacterCreator> creator;
     while (true) {
         std::cout<<"Do you want a default character? (Y/N)"<<std::endl;
-        std::cin>>input;
+        f>>input;
         input=tolower(input);
         if (input == 'y') {
             creator = std::make_unique<DefaultCharacterCreator>();
@@ -74,7 +78,7 @@ void Game::selectLevel() {
     while (!select) {
         try {
             std::cout<<"Please choose a level (1 or 2)."<<std::endl;
-            if (!(std::cin>>level)) {
+            if (!(f>>level)) {
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                 throw inputInvalid("Input must be a number.");
             } else
@@ -120,7 +124,7 @@ void Game::moveCharacter() {
         std::cout<<"To move character enter: \n";
         std::cout<<"WITCH : W for up, A for left, D for right, S for down.\n";
         std::cout<<" DEITY : I for up, J for left, L for right, K for down.\n";
-        std::cin>>input;
+        f>>input;
         input=tolower(input);
         int dx=0, dy=0;
         Character* target = nullptr;
