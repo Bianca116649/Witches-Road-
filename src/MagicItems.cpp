@@ -7,7 +7,7 @@ MagicItems::MagicItems(float castTime, int Sx, int Sy, int Sw, int Sh, bool canH
                        const std::string &basic_string, int damage1, int max_targets, bool secundary_effect,
                        int duration, int charges, const std::string &rarity)
     : Items(damage, name),
-Spell(castTime, Sx, Sy, Sw, Sh, canHeal, name, damage),
+Spell(castTime, Sx, Sy, Sw, Sh, canHeal, damage, name),
       Weapon(durability, attackRange, specialeffect, isBroken, basic_string, damage1),
 maxTargets(max_targets), secundaryEffect(secundary_effect), duration(duration),
       charges(charges), rarity(rarity) {}

@@ -2,7 +2,7 @@
 #include <list>
 
 Spell::Spell(const float castTime, const int Sx, const int Sy, const int Sw, const int Sh, const bool canHeal,
-    const std::string& name, const int damage) : Items(damage, name),
+    int damage, const std::string& name) : Items(damage, name),
     castTime(castTime), Sx(Sx), Sy(Sy), Sw(Sw), Sh(Sh), canHeal(canHeal){}
 
 Spell::Spell(const Spell &other)

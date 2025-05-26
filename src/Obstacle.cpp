@@ -2,8 +2,8 @@
 
 Obstacle::Obstacle(){}
 
-Obstacle::Obstacle(const std::string& name, const int damage, const int x, const int y, const bool active)
-    : name(name), totalDamage(damage), positionX(x), positionY(y), active(active) {}
+Obstacle::Obstacle(const std::string& Obsname, const int damage, const int x, const int y, const bool active)
+    : name(Obsname), totalDamage(damage), positionX(x), positionY(y), active(active) {}
 
 Obstacle::~Obstacle() = default;
 
