@@ -21,7 +21,7 @@ public:
     int levelFromItems() const override;
 
     //using Weapon::giveDamage;
-    void giveDamage(const std::list<Ghost*>& ghosts);
+    void giveDamage(const std::list<Ghost*>& ghosts) override;
 };
 
 
