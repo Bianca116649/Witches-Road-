@@ -29,7 +29,7 @@ public:
 
     int getY() const;
 
-    void setName(const std::string& Obsname);
+    void setName(const std::string& name);
     void setPosition(int x, int y);
 
     virtual void applyDamage(Character& target) = 0;

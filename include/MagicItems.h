@@ -19,6 +19,7 @@ public:
     MagicItems(const MagicItems &other);
     MagicItems& operator=(const MagicItems &other);
     int levelFromItems() const override;
+
     using Weapon::giveDamage;
     void giveDamage(const std::list<Ghost*>& ghosts) override;
 };
