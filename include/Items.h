@@ -14,7 +14,6 @@ public:
     Items(const Items &other);
     Items & operator=(const Items &other);
     virtual ~Items();
-
     virtual void giveDamage()=0;
     virtual int levelFromItems() const=0;
     bool operator<(const Items &other) const;

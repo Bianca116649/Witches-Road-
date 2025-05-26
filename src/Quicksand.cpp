@@ -10,6 +10,7 @@ Quicksand::Quicksand(): escape_time(0), damage_in_time(0), duration(0), initialD
 }
 
 void Quicksand::activate(Character& target) {
+    (void) target;
     active = true;
 }
 
