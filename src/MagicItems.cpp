@@ -52,18 +52,18 @@ void MagicItems::giveDamage(const std::list<Ghost*>& ghosts) {
 
     Spell::giveDamage(ghosts);
 
-    if (canHeal) {
+    if (Spell::canHeal) {
         for (Ghost* ghost : ghosts) {
             if (ghost && ghost->isAlive() && ghost->getPower()<50) {
-                ghost->takeDamage(damage);
+                ghost->takeDamage(Weapon::damage);
             }
         }
     }
-    damage = originalDamage;
+    Weapon::damage = originalDamage;
 
     Weapon::giveDamage();
 
     charges--;
-    durability-=2;
-    if (durability<=0){isBroken=true;}
+    Weapon::durability-=2;
+    if (Weapon::durability<=0){Weapon::isBroken=true;}
 }
