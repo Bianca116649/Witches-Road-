@@ -2,7 +2,8 @@
 #include "../include/Items.h"
 #include <list>
 
-Spell::Spell() : Items(), castTime(0), Sx(0), Sy(0), Sw(0), Sh(0), canHeal(false) {}
+Spell::Spell() : Items(damage, name), castTime(0), Sx(0), Sy(0), Sw(0), Sh(0), canHeal(false) {
+}
 
 Spell::Spell(const float castTime, const int Sx, const int Sy, const int Sw, const int Sh, const bool canHeal)
         :castTime(castTime), Sx(Sx), Sy(Sy), Sw(Sw), Sh(Sh), canHeal(canHeal){}
