@@ -29,7 +29,7 @@ public:
 
     int getY() const;
 
-    void setName(const std::string& name);
+    void setName(const std::string& Newname);
 
     void setPosition(int x, int y);
 

@@ -15,8 +15,8 @@ int Obstacle::getY() const {
     return positionY;
 }
 
-void Obstacle::setName(const std::string& name) {
-    this->name = name;
+void Obstacle::setName(const std::string& Newname) {
+    this->name = Newname;
 }
 
 void Obstacle::setPosition(const int x, const int y) {
