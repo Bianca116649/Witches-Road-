@@ -13,7 +13,7 @@ protected:
 
 public:
     Weapon(int durability, int attackRange, const std::string& specialeffect,
-        bool isBroken, const std::string& name, int damage, Spikes* spikes);
+        bool isBroken, Spikes* spikes);
 
     Weapon(const Weapon &other);
 

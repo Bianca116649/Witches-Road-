@@ -12,7 +12,7 @@ protected:
 
 public:
 
-    Spell(float castTime, int Sx, int Sy, int Sw, int Sh, bool canHeal, const std::string &name, int damage);
+    Spell(float castTime, int Sx, int Sy, int Sw, int Sh, bool canHeal);
 
     ~Spell() override;
 
