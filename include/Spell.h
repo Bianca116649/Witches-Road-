@@ -13,7 +13,7 @@ protected:
 public:
 
     Spell(float castTime, int Sx, int Sy, int Sw, int Sh, bool canHeal);
-
+    Spell();
     ~Spell() override;
 
     Spell(const Spell &other);
