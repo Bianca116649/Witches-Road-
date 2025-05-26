@@ -1,13 +1,13 @@
 #include "../include/Spell.h"
 #include <list>
 
-Spell::Spell(const float castTime, const int Sx, const int Sy, const int Sw,
-    const int Sh, const bool canHeal) :
-castTime(castTime), Sx(Sx), Sy(Sy), Sw(Sw),
-Sh(Sh), canHeal(canHeal){}
+Spell::Spell(const float castTime, const int Sx, const int Sy, const int Sw, const int Sh, const bool canHeal,
+    const std::string& name, const int damage) : Items(damage, name),
+    castTime(castTime), Sx(Sx), Sy(Sy), Sw(Sw), Sh(Sh), canHeal(canHeal){}
 
 Spell::Spell(const Spell &other)
-  :castTime(other.castTime),
+  : Items(other),
+    castTime(other.castTime),
     Sx(other.Sx),
     Sy(other.Sy),
     Sw(other.Sw),

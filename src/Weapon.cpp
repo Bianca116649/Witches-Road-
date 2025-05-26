@@ -3,16 +3,24 @@
 #include "../include/Spikes.h"
 
 Weapon::Weapon(const int durability, const int attackRange, const std::string& specialeffect, const bool isBroken,
-               Spikes*  spikes): durability(durability), attackRange(attackRange), specialeffect(specialeffect),
+               const std::string& name, const int damage, Spikes*  spikes): Items(damage, name), durability(durability),
+                                                                            attackRange(attackRange), specialeffect(specialeffect),
                                                                             isBroken(isBroken), spikes(spikes) {
-    if (!this->spikes) {
+    if (!spikes) {
         this -> spikes = new Spikes();
     }
 }
 
+Weapon::Weapon(const int durability, const int attackRange, const std::string& specialeffect,bool isBroken,
+    const std::string& name, const int damage): Items(damage, name), durability(durability) {
+    (void)attackRange;
+    (void)  specialeffect;
+    (void) isBroken;
+}
 
 Weapon::Weapon(const Weapon &other)
-  :durability(other.durability),
+  : Items(other),
+    durability(other.durability),
     attackRange(other.attackRange),
     specialeffect(other.specialeffect),
     isBroken(other.isBroken),
@@ -22,6 +30,7 @@ Weapon::Weapon(const Weapon &other)
 Weapon& Weapon:: operator=(const Weapon &other) {
     if (this == &other)
         return *this;
+    Items::operator =(other);
     durability = other.durability;
     attackRange = other.attackRange;
     specialeffect = other.specialeffect;

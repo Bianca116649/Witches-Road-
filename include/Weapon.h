@@ -13,7 +13,9 @@ protected:
 
 public:
     Weapon(int durability, int attackRange, const std::string& specialeffect,
-        bool isBroken, Spikes* spikes);
+        bool isBroken, const std::string& name, int damage, Spikes* spikes);
+    Weapon(int durability, int attackRange, const std::string& specialeffect,bool isBroken,
+      const std::string& name, int damage);
 
     Weapon(const Weapon &other);
 
