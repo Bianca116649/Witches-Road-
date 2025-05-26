@@ -59,9 +59,13 @@ void MagicItems::giveDamage(const std::list<Ghost*>& ghosts) {
     }
     Weapon::damage = originalDamage;
 
-    Weapon::giveDamage();
+    giveDamage();
 
     charges--;
     Weapon::durability-=2;
     if (Weapon::durability<=0){Weapon::isBroken=true;}
+}
+
+void MagicItems::giveDamage() {
+    return Weapon::giveDamage();
 }
