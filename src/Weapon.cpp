@@ -6,13 +6,11 @@ Weapon::Weapon(const int durability, const int attackRange, const std::string& s
                const std::string& name, const int damage, Spikes*  spikes): Items(damage, name), durability(durability),
                                                                             attackRange(attackRange), specialeffect(specialeffect),
                                                                             isBroken(isBroken), spikes(spikes) {
-    if (!spikes) {
+    if (!this->spikes) {
         this -> spikes = new Spikes();
     }
 }
 
-Weapon::Weapon(const int durability, int attackRange, const std::string& specialeffect,bool isBroken,
-    const std::string& name, const int damage): Items(damage, name), durability(durability){}
 
 Weapon::Weapon(const Weapon &other)
   : Items(other),

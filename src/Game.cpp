@@ -40,7 +40,7 @@ void Game::start() {
 }
 
 void Game::addItem() {
-    std::shared_ptr<Items> item = std::make_shared<Weapon>(100, 5, "Fire Damage", false, "FLaming Sward", 25);
+    std::shared_ptr<Items> item = std::make_shared<Weapon>(100, 5, "Fire Damage", false, "FLaming Sward", 25, nullptr);
     inventory.addItems(item);
 
 
