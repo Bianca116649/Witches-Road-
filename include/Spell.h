@@ -4,7 +4,7 @@
 #include "Items.h"
 
 #include<list>
-class Spell : virtual public Items{
+class Spell : public virtual Items{
 protected:
     float castTime;
     int Sx, Sy, Sw, Sh;  // raza vrajii
@@ -12,7 +12,7 @@ protected:
 
 public:
 
-    Spell(float castTime, int Sx, int Sy, int Sw, int Sh, bool canHeal, int damage, const std::string& name);
+    Spell(float castTime, int Sx, int Sy, int Sw, int Sh, bool canHeal);
 
     ~Spell() override;
 
