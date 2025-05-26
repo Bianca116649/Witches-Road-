@@ -2,10 +2,14 @@
 #include "../include/Spell.h"
 #include "../include/Weapon.h"
 
-MagicItems::MagicItems(float castTime, int Sx, int Sy, int Sw, int Sh, bool canHeal, const std::string &name,
-                       int damage, int durability, int attackRange, const std::string &specialeffect, bool isBroken,
-                       const std::string &basic_string, int damage1, int max_targets, bool secundary_effect,
-                       int duration, int charges, const std::string &rarity, Spikes* spikes)
+MagicItems::MagicItems(float castTime, int Sx, int Sy, int Sw, int Sh,
+    bool canHeal, const std::string &name,
+                       int damage, int durability, int attackRange,
+                       const std::string &specialeffect, bool isBroken,
+                       const std::string &basic_string, int damage1,
+                       int max_targets, bool secundary_effect,
+                       int duration, int charges,
+                       const std::string &rarity, Spikes* spikes)
     : Items(damage, name),
     Spell(castTime, Sx, Sy, Sw, Sh, canHeal, name, damage),
       Weapon(durability, attackRange, specialeffect, isBroken, basic_string, damage1, spikes),

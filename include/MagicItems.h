@@ -10,7 +10,6 @@ private:
     int duration;
     int charges;
     std::string rarity;
-    Spikes *spikes;
 public:
     MagicItems(float castTime, int Sx, int Sy, int Sw, int Sh, bool canHeal, const std::string &name,
         int damage, int durability, int attackRange, const std::string &specialeffect, bool isBroken,
