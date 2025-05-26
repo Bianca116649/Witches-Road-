@@ -14,14 +14,16 @@ maxTargets(max_targets), secundaryEffect(secundary_effect), duration(duration),
 MagicItems::~MagicItems() = default;
 
 MagicItems::MagicItems(const MagicItems &other)
-        : Items(other),
-Spell(other),
+        :
+          Spell(other),
           Weapon(other),
           maxTargets(other.maxTargets),
           secundaryEffect(other.secundaryEffect),
           duration(other.duration),
           charges(other.charges),
           rarity(other.rarity) {
+    this->damage = other.damage;
+    this->name= other.name;
 }
 
 MagicItems& MagicItems:: operator=(const MagicItems &other) {
@@ -34,6 +36,8 @@ MagicItems& MagicItems:: operator=(const MagicItems &other) {
     duration = other.duration;
     charges = other.charges;
     rarity = other.rarity;
+    this->damage = other.damage;
+    this->name = other.name;
     return *this;
 }
 

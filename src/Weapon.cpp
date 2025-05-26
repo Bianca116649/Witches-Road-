@@ -1,5 +1,4 @@
 #include "../include/Weapon.h"
-#include "../include/Items.h"
 #include "../include/Spikes.h"
 
 Weapon::Weapon(const int durability, const int attackRange, const std::string& specialeffect, const bool isBroken, Spikes*  spikes)
@@ -13,7 +12,7 @@ Weapon::Weapon(const int durability, const int attackRange, const std::string& s
 : durability(durability), attackRange(attackRange), specialeffect(specialeffect), isBroken(isBroken) {}
 
 Weapon::Weapon(const Weapon &other)
-  : Items(other),
+  :
     durability(other.durability),
     attackRange(other.attackRange),
     specialeffect(other.specialeffect),
@@ -24,7 +23,6 @@ Weapon::Weapon(const Weapon &other)
 Weapon& Weapon:: operator=(const Weapon &other) {
     if (this == &other)
         return *this;
-    Items::operator =(other);
     durability = other.durability;
     attackRange = other.attackRange;
     specialeffect = other.specialeffect;

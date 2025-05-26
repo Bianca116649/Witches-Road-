@@ -1,13 +1,13 @@
 #include "../include/Spell.h"
 #include <list>
 
-Spell::Spell() : Items(), castTime(0), Sx(0), Sy(0), Sw(0), Sh(0), canHeal(false) {}
+Spell::Spell() : castTime(0), Sx(0), Sy(0), Sw(0), Sh(0), canHeal(false) {}
 
 Spell::Spell(const float castTime, const int Sx, const int Sy, const int Sw, const int Sh, const bool canHeal)
-        :Items(), castTime(castTime), Sx(Sx), Sy(Sy), Sw(Sw), Sh(Sh), canHeal(canHeal){}
+        :castTime(castTime), Sx(Sx), Sy(Sy), Sw(Sw), Sh(Sh), canHeal(canHeal){}
 
 Spell::Spell(const Spell &other)
-  : Items(other),
+  :
     castTime(other.castTime),
     Sx(other.Sx),
     Sy(other.Sy),
@@ -19,7 +19,6 @@ Spell& Spell:: operator=(const Spell &other) {
     if (this == &other) {
         return *this;
     }
-    Items::operator=(other);
     castTime = other.castTime;
     Sx = other.Sx;
     Sy = other.Sy;
