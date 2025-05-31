@@ -31,9 +31,6 @@ public:
 
     int getPower() const;
 
-    bool canFly() const;
-
-    void haunt(Character& target) const;
 };
 
 #endif // GHOST_H

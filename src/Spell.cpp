@@ -26,15 +26,22 @@ int Spell::levelFromItems() const {
     return Sw * Sh;
 }
 
-void Spell::giveDamage(const std::list<Ghost*>& ghosts){
+void Spell::setGhost(const std::list<Ghost*> &ghosts) {
+    keptGhosts.clear();
     for (Ghost* ghost : ghosts) {
         if (!ghost || !ghost->isAlive()) continue;
         const int x = ghost->getX();
         const int y = ghost->getY();
         if (inArea(x, y)) {
-            ghost->takeDamage(damage);
+            keptGhosts.push_back(ghost);
         }
+
     }
+}
+void Spell::giveDamage(){
+   for (Ghost* ghost : keptGhosts) {
+       ghost->takeDamage(100);
+   }
 }
 
 Spell::~Spell() =default;

@@ -31,3 +31,7 @@ void Inventory::printSort() {
     this->sortItems();
     std::cout << *this;
 }
+
+std::vector<std::shared_ptr<Items>> Inventory::getItems() const{
+    return items;
+}

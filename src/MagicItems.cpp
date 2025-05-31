@@ -45,31 +45,29 @@ int MagicItems:: levelFromItems() const {
     return static_cast<int>(rarity.length());
 }
 
-void MagicItems::giveDamage(const std::list<Ghost*>& ghosts) {
+void MagicItems::giveDamage() {
     if (isBroken || charges <=0)
         return;
+
     const int rarityBonus = static_cast<int>(rarity.length())*3;
     const int originalDamage = damage;
     damage += rarityBonus;
 
-    Spell::giveDamage(ghosts);
+    Spell::giveDamage();
 
-    if (Spell::canHeal) {
-        for (Ghost* ghost : ghosts) {
+    if (canHeal) {
+        for (Ghost* ghost : keptGhosts) {
             if (ghost && ghost->isAlive() && ghost->getPower()<50) {
-                ghost->takeDamage(Weapon::damage);
+                ghost->takeDamage(damage);
             }
         }
     }
-    Weapon::damage = originalDamage;
+    damage = originalDamage;
 
-    giveDamage();
+    Weapon::giveDamage();
 
     charges--;
     Weapon::durability-=2;
-    if (Weapon::durability<=0){Weapon::isBroken=true;}
-}
-
-void MagicItems::giveDamage() {
-    return Weapon::giveDamage();
+    if (Weapon::durability<=0)
+        {Weapon::isBroken=true;}
 }

@@ -4,9 +4,13 @@
 
 Ghost::Ghost(const int value, const int power, const bool fly, const int position_x, const std::string& name, const int position_y, const int total_damage, bool active, Game* game)
     : Obstacle(name, total_damage, position_x, position_y, active),
-fly(fly), power(power), value(value), game(game) {}
+fly(fly), power(power), value(value), game(game) {
+    active = true;
+}
 
-Ghost::Ghost(): fly(false), power(0), value(0), game(nullptr) {
+Ghost::Ghost(): fly(false), power(0), value(0), game(nullptr){
+    active = true;
+    totalDamage = 20;
 }
 
 int Ghost::getBaseDamage() const {
@@ -22,6 +26,7 @@ int Ghost::calculateDamage() const {
         damage = static_cast<int>(damage * 1.2);
     }
     return damage;
+
 }
 
 void Ghost::takeDamage(const int damage) {
@@ -30,11 +35,6 @@ void Ghost::takeDamage(const int damage) {
         active = false;
     }
 }
-// void Ghost::haunt(Character& target) const {
-//     if (active) {
-//         target.receiveDamage(1);
-//     }
-// }
 
 void Ghost::applyDamage(Character& target) {
     int damage = calculateDamage();
@@ -54,6 +54,3 @@ bool Ghost::isAlive() const {
 int Ghost::getPower() const {
     return power;
 }
-// bool Ghost::canFly() const {
-//     return fly;
-// }

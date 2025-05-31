@@ -24,10 +24,6 @@ Items& Items:: operator=(const Items &other) {
     return *this;
 }
 
-// int Items::getDamage() const {
-//     return damage;
-// }
-
 const std::string& Items::getName() const {
     return name;
 }

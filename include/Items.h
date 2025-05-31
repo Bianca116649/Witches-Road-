@@ -19,7 +19,6 @@ public:
     bool operator<(const Items &other) const;
     const std::string& getName() const;
     int getId() const;
-    //int getDamage() const;
     friend std::ostream& operator<<(std::ostream& os, const Items& items);
 };
 

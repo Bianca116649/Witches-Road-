@@ -19,7 +19,7 @@ public:
     void sortItems();
 
     void printSort();
-
+    std::vector<std::shared_ptr<Items>> getItems() const;
     ~Inventory()=default;
     friend std::ostream& operator<<(std::ostream& os, const Inventory& inventory);
 };

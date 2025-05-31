@@ -20,7 +20,6 @@ public:
 
     //using Weapon::giveDamage;
     void giveDamage() override;
-    void giveDamage(const std::list<Ghost*>& ghosts) override;
 };
 
 

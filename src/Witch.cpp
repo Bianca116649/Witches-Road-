@@ -31,12 +31,14 @@ const std::string& Witch::getCovenName() const { return covenName; }
 bool Witch::isAliveStatus() const { return isAlive; }
 
 void Witch::receiveDamage(const int damage) {
-    if (!isAlive){return ;}
+    if (!isAlive) return;
     life = std::max(0, life - damage);
-    if (life==0) {
-        isAlive=false;
+    if (life == 0) {
+        isAlive = false;
+        std::cout << "Witch has died.\n";
     }
 }
+
 
 void Witch::displayInfo() const {
     std::cout << *this << "\n";

@@ -15,6 +15,7 @@
 #include "../include/LevelTwoConfigurator.h"
 #include "../include/DefaultCharacterCreator.h"
 #include "../include/CharacterSelector.h"
+#include "../include/Witch.h"
 
 Game::~Game()=default;
 
@@ -40,10 +41,12 @@ void Game::start() {
 }
 
 void Game::addItem() {
-    std::shared_ptr<Items> item = std::make_shared<Weapon>(100, 5, "Fire Damage", false);
+    const std::shared_ptr<Items> item = std::make_shared<Weapon>(100, 5, "Fire Damage", false);
     inventory.addItems(item);
-
-
+    const std::shared_ptr<Items> item2 = std::make_shared<Spell>(30.2, 2,4,5,2,true);
+    inventory.addItems(item2);
+    const std::shared_ptr<Items> item3 = std::make_shared<MagicItems>(2,3,3,3,3,true, "Death Kiss", 45, 60, 10, "smoke", false, 10, "freezing", 70, 5, "legendary");
+    inventory.addItems(item3);
 }
 void Game::chooseCharacter() {
     char input;
@@ -51,6 +54,7 @@ void Game::chooseCharacter() {
     while (true) {
         std::cout<<"Do you want a default character? (Y/N)"<<std::endl;
         f>>input;
+        //cin>>input;
         input=tolower(input);
         if (input == 'y') {
             creator = std::make_unique<DefaultCharacterCreator>();
@@ -78,6 +82,7 @@ void Game::selectLevel() {
     while (!select) {
         try {
             std::cout<<"Please choose a level (1 or 2)."<<std::endl;
+
             if (!(f>>level)) {
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                 throw inputInvalid("Input must be a number.");
@@ -125,6 +130,7 @@ void Game::moveCharacter() {
         std::cout<<"WITCH : W for up, A for left, D for right, S for down.\n";
         std::cout<<" DEITY : I for up, J for left, L for right, K for down.\n";
         f>>input;
+        //cin>>input;
         input=tolower(input);
         int dx=0, dy=0;
         Character* target = nullptr;
@@ -160,15 +166,70 @@ void Game::moveCharacter() {
     }
 }
 
-void Game::verifyPosition(Character& c) const {
+void Game::verifyPosition(Character& c){
     auto obstacles = map->getObstacles();
     for (const auto& obs: obstacles) {
         if (obs->getX()==c.getX() && obs->getY()==c.getY()) {
             if (obs->isActive()) {
-                obs->activate(c);
+                battle(c, *obs);
             }
             else std::cout<<"Inactive obstacle. You are safe.\n";
         }
+    }
+}
+
+
+void Game::battle(Character& c, Obstacle& obs) {
+    addItem();
+
+    if (Ghost* ghost = dynamic_cast<Ghost*>(&obs)) {
+        std::cout << "Battle started\n";
+
+        for (int i = 0; i < 10 && ghost->isAlive(); ++i) {
+            std::cout << "\n--- Round " << i + 1 << " ---\n";
+            obs.applyDamage(c);
+
+            bool damageApplied = false;
+            for (const auto& item : inventory.getItems()) {
+                if (item) {
+                    if (auto spell = std::dynamic_pointer_cast<Spell>(item)) {
+
+                        spell->setGhost({ghost});
+                        spell->giveDamage();
+                        damageApplied = true;
+                        break;
+                    }
+                    else if (auto magic = std::dynamic_pointer_cast<MagicItems>(item)) {
+
+                        magic->setGhost({ghost});
+                        magic->giveDamage();
+                        damageApplied = true;
+                        break;
+                    }
+                }
+            }
+
+            if (!damageApplied) {
+                std::cout << "No usable Spell or MagicItem found to apply damage.\n";
+            }
+
+            if (Witch* witch = dynamic_cast<Witch*>(&c)) {
+                std::cout << "Witch HP: " << witch->getLife() << "\n";
+                if (!witch->isAliveStatus()) {
+                    std::cout <<witch->getName() << " was defeated by the ghost!\n";
+                    stop();
+                    return;
+                }
+            }
+        }
+
+        if (!ghost->isAlive()) {
+            std::cout << "Ghost defeated by " << c.getName() << "!\n";
+            updateScore(100);
+        }
+    }
+    else {
+        std::cout << "No battle: obstacle is not a ghost.\n";
     }
 }
 

@@ -3,6 +3,7 @@
 #include <fstream>
 #include <Inventory.h>
 #include <memory>
+#include<list>
 #include "Character.h"
 #include "Map.h"
 
@@ -21,6 +22,7 @@ private:
     std::string player1;
     std::string player2;
     Game() : map(std::make_shared<Map>()),gameOn(true), lvl_name("_"), score(0) {}
+    std::list<Ghost*> ghosts;
 
 public:
 
@@ -32,10 +34,11 @@ public:
     void chooseCharacter();
     void start();
     void selectLevel();
-    void verifyPosition(Character& c) const;
+    void verifyPosition(Character& c);
     void stop();
     void moveCharacter();
     void updateScore(int points);
+    void battle(Character& c, Obstacle& obs);
     friend std::istream& operator>>(std::istream& is, Game& game);
     friend std::ostream& operator<<(std::ostream& os, const Game& game);
 };

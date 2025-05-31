@@ -9,17 +9,16 @@ protected:
     float castTime;
     int Sx, Sy, Sw, Sh;  // raza vrajii
     bool canHeal;
-
+    std::list<Ghost*> keptGhosts;
 public:
 
     Spell(float castTime, int Sx, int Sy, int Sw, int Sh, bool canHeal);
-
     ~Spell() override;
-
     Spell(const Spell &other);
     Spell& operator=(const Spell &other);
     using Items::giveDamage;
-    virtual void giveDamage(const std::list<Ghost*>& ghosts);
+    virtual void giveDamage();
+    void setGhost(const std::list<Ghost*>&ghosts);
     bool inArea(int x, int y) const;
     int levelFromItems() const override;
 };
