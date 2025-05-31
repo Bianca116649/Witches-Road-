@@ -5,7 +5,6 @@
 Ghost::Ghost( const int power, const bool fly, const int position_x, const std::string& name, const int position_y, const int total_damage, bool active)
     : Obstacle(name, total_damage, position_x, position_y, active),
 fly(fly), power(power){
-    active = true;
 }
 
 Ghost::Ghost(): fly(false), power(0){

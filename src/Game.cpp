@@ -213,7 +213,7 @@ void Game::battle(Character& c, Obstacle& obs) {
                 std::cout << "No usable Spell or MagicItem found to apply damage.\n";
             }
 
-            if (Witch* witch = dynamic_cast<Witch*>(&c)) {
+            if (const Witch* witch = dynamic_cast<const Witch*>(&c)) {
                 std::cout << "Witch HP: " << witch->getLife() << "\n";
                 if (!witch->isAliveStatus()) {
                     std::cout <<witch->getName() << " was defeated by the ghost!\n";

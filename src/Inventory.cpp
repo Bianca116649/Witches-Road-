@@ -32,6 +32,6 @@ void Inventory::printSort() {
     std::cout << *this;
 }
 
-std::vector<std::shared_ptr<Items>> Inventory::getItems() const{
+std::vector<std::shared_ptr<Items>>& Inventory::getItems() {
     return items;
 }
