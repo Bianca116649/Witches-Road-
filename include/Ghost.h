@@ -8,14 +8,11 @@ class Ghost : public Obstacle {
 private:
     bool fly;
     int power;
-    int value;
-    Game* game;
-
 public:
     Ghost();
 
-    Ghost(int value, int power, bool fly, int position_x, const std::string &name, int position_y,
-          int total_damage, bool active, Game* game);
+    Ghost(int power, bool fly, int position_x, const std::string &name, int position_y,
+          int total_damage, bool active);
 
     int getBaseDamage() const override;
 

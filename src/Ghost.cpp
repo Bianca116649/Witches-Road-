@@ -2,13 +2,13 @@
 #include "../include/Character.h"
 #include <iostream>
 
-Ghost::Ghost(const int value, const int power, const bool fly, const int position_x, const std::string& name, const int position_y, const int total_damage, bool active, Game* game)
+Ghost::Ghost( const int power, const bool fly, const int position_x, const std::string& name, const int position_y, const int total_damage, bool active)
     : Obstacle(name, total_damage, position_x, position_y, active),
-fly(fly), power(power), value(value), game(game) {
+fly(fly), power(power){
     active = true;
 }
 
-Ghost::Ghost(): fly(false), power(0), value(0), game(nullptr){
+Ghost::Ghost(): fly(false), power(0){
     active = true;
     totalDamage = 20;
 }

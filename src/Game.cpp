@@ -187,7 +187,7 @@ void Game::battle(Character& c, Obstacle& obs) {
 
         for (int i = 0; i < 10 && ghost->isAlive(); ++i) {
             std::cout << "\n--- Round " << i + 1 << " ---\n";
-            obs.applyDamage(c);
+            obs.activate(c);
 
             bool damageApplied = false;
             for (const auto& item : inventory.getItems()) {
