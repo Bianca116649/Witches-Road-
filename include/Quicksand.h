@@ -3,34 +3,73 @@
 
 #include "Obstacle.h"
 #include "Character.h"
+#include <string>
 
+template<typename T>
 class Quicksand : public Obstacle {
+
 private:
-    int escape_time;
-    int damage_in_time;
-    int duration;
-    int initialDuration;
+    T escape_time;
+    T damage_in_time;
+    T duration;
+    T initialDuration;
 
 public:
-    Quicksand();
+    Quicksand()
+        : escape_time(0), damage_in_time(0), duration(0), initialDuration(0) {}
 
-    Quicksand(int escape, int total_damage, const std::string& name, int pos_x, int pos_y, int damage_per_second, bool active);
-    void activate(Character& target) override;
+    Quicksand(T escape, T total_damage, const std::string& name, int pos_x, int pos_y,
+        T damage_per_second, bool active)
+        : Obstacle(name, static_cast<int>(total_damage), pos_x, pos_y, active),
+          escape_time(escape),
+          damage_in_time(damage_per_second),
+          duration(escape),
+          initialDuration(escape) {}
 
-    int calculateDamage() const override;
+    void activate(Character& target) override {
+        (void) target;
+        active=true;
+    }
 
-    void applyDamage(Character& target) override;
+    int calculateDamage() const override {
+        if (duration > escape_time / static_cast<T>(2))
+            return static_cast<int>(damage_in_time);
+        if (duration > static_cast<T>(1))
+            return static_cast<int>(damage_in_time * static_cast<T>(2));
+        return 0;
+    }
 
-    int getBaseDamage() const override;
+    void applyDamage(Character& target) override {
+        int damage = calculateDamage();
+        if (damage > 0) {
+            target.receiveDamage(damage);
+        } else {
+            deactivate();
+            return;
+        }
+        duration -= static_cast<T>(1);
+    }
 
-    void deactivate();
+    int getBaseDamage() const override {
+        return static_cast<float>(damage_in_time * escape_time);
+    }
 
-    void tick(Character& target);
+    void deactivate() {
+        active=false;
+    }
 
-    void reset();
+    void tick(Character& target) {
+        if (this->isActive()) {
+            applyDamage(target);
+        }
+    }
 
-    ~Quicksand() override;
+    void reset() {
+        duration = initialDuration;
+        active = false;
+    }
+
+    ~Quicksand() override = default;
 };
 
 #endif // QUICKSAND_H
-

@@ -29,6 +29,7 @@ Game& Game::getInstance() {
 void Game::start() {
     f.open("tastatura.txt");
     std::cout << "GAME START\n";
+    //cin>>*this;
     f>>*this;
     std::cout<<"Use A,S,D,W for WITCH and I,J,K,L,P for DEITY.\n";
     try {
@@ -78,7 +79,6 @@ void Game::selectLevel() {
    bool select = false;
     int level;
     std::unique_ptr<ILevelConfigurator> configurator;
-
     while (!select) {
         try {
             std::cout<<"Please choose a level (1 or 2)."<<std::endl;
@@ -225,7 +225,7 @@ void Game::battle(Character& c, Obstacle& obs) {
 
         if (!ghost->isAlive()) {
             std::cout << "Ghost defeated by " << c.getName() << "!\n";
-            updateScore(100);
+            updateScore(50);
         }
     }
     else {
