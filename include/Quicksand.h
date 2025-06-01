@@ -56,12 +56,7 @@ public:
 
     void deactivate() {
         active=false;
-    }
-
-    void tick(Character& target) {
-        if (this->isActive()) {
-            applyDamage(target);
-        }
+        reset();
     }
 
     void reset() {
